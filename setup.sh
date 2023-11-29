@@ -88,11 +88,9 @@ pct create "${CONTAINER_ID}" "${TEMPLATE_STRING}" \
     -ostype "${CONTAINER_OS_TYPE}" \
     -password ${HOSTPASS} \
     -storage "${STORAGE}" \
-    --unprivileged 0 \
+    -features nesting=1,keyctl=1 \
+    --unprivileged 1 \
     || fatal "Failed to create container!"
-
-#    -features nesting=1,keyctl=1 \
-#    --unprivileged 1 \
 
 
 # Configure container
