@@ -1,0 +1,16 @@
+version: "3.4"
+
+services:
+
+  uptime_kuma:
+    image: louislam/uptime-kuma
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "-S", "--max-time", "2", "http://localhost:3001"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    volumes:
+      - /home/monitoradmin/uptime_kuma:/app/data 
